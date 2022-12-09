@@ -1,0 +1,14 @@
+#navbarNav{
+
+    display: flex;
+    justify-content : center;
+
+
+}
+#navbarNav li{
+
+    display: flex;
+    justify-content: center;
+    margin-left: 225%;
+    font-size: 1.6rem;
+}

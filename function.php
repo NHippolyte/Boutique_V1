@@ -1,7 +1,7 @@
 <?php
 $articles = getArticles();
 function getArticles()
-{
+{   
     return [
         [
             'name' => 'Veste Lacoste',
@@ -16,7 +16,7 @@ function getArticles()
             'id' => '2',
             'price' => 180.00,
             'description' => 'Jordan Doudoune Essential Hommes',
-            'detailedDescription' => ' Rester frais au chaud (taille unique)',
+            'detailedDescription' => ' Rester frais au chaud (Disponible en S et L seulement)',
             'picture' => 'Jordan.jpg'
         ],
         [
@@ -25,8 +25,6 @@ function getArticles()
             'price' => 330.00,
             'description' => 'VESTE 1996 RETRO NUPTSE POUR HOMME',
             'detailedDescription' => 'Doudoune parfaite pour la saison hivernale (taille unique)',
-
-
             'picture' => 'Tnf.jpg'
         ]
     ];
@@ -40,7 +38,7 @@ function showArticles()
     $articles = getArticles();
     foreach ($articles as $article) {
         echo "<div class=\"card col-md-5 col-lg-3 p-3 m-3\" style=\"width: 18rem;\">
-        <img class=\"card-img-top\" src=\"images/" . $article['picture'] . "\" alt=\"Card image cap\">
+        <img class=\"card-img-top\" src=\"./img/" . $article['picture'] . "\" class=\"card-img-top\" alt=\"images des produits\" . $article ['picture'] .\" alt=\"Card image cap\">
         <div class=\"card-body\">
             <h5 class=\"card-title font-weight-bold\">${article['name']}</h5>
             <p class=\"card-text font-italic\">" . $article['description'] . "</p>
@@ -68,7 +66,7 @@ function getArticleFromId($id)
         }
     }
 }
-/*-----creationpanier---------*/
+/*--------Creer le panier---------*/
 
 
 
@@ -79,11 +77,7 @@ function creationPanier()
 }
 
 
-
-
-
-
-/*-----ajoutpanier---------*/
+/*--------Ajouter au panier---------*/
 
 
 function ajouterArticle($article)
@@ -101,7 +95,7 @@ function ajouterArticle($article)
 }
 
 
-/*-----supprimerpanier---------*/
+/*--------Supprimer du panier---------*/
 
 
 function supprimerArticle($article)
@@ -117,7 +111,7 @@ function supprimerArticle($article)
 
 
 
-/*-----vider le panier---------*/
+/*---------Vider le panier---------*/
 
 function viderPanier()
 {
@@ -127,7 +121,7 @@ function viderPanier()
 
 
 
-/*-----modifier le panier---------*/
+/*---------- Modifier le panier---------*/
 
 
 function modifQuantite()
@@ -141,7 +135,7 @@ function modifQuantite()
 
 
 
-/*-----total panier---------*/
+/*----- Total du panier---------*/
 
 function totalPanier()
 {
@@ -156,7 +150,7 @@ function totalPanier()
 
 
 
-/*-----frais de port---------*/
+/*-----Ajout frais de port ---------*/
 
 
 function calculFraisport()
@@ -170,7 +164,7 @@ function calculFraisport()
 
 
 
-/*------totalgeneral--------*/
+/*------ Total --------*/
 
 function totalGeneral()
 {
@@ -179,7 +173,7 @@ function totalGeneral()
 }
 
 
-/*------afficher la date de livraison--------*/
+/*------ Date de livraison--------*/
 
 function showShippingDate(){
     // date affichée ainsi : 6 juin 2021
@@ -188,14 +182,49 @@ function showShippingDate(){
     echo utf8_encode(strftime("%A %d %B %Y", strtotime($date . " + 1 day")));
 }
 
-/*------afficher la date de livraison-------*/
+/*------ Afficher la date de livraison-------*/
 
 
 function showDeliveryDate(){
     echo utf8_encode(strftime("%A %d %B %Y", strtotime(date("Y-m-d") . " + 5 days")));
 }
 
+// ***************** vérifier que l'e-mail est déjà utilisé ************************
 
+function checkEmail($email)
+{
+    $db = getConnection();
 
+    $query = $db->prepare("SELECT * FROM clients WHERE email = ?");
+    $query->execute([$email]);
+$user = $query->fetch();
+    if ($user) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function inscription()
+{
+    /*détail de la fonction : 
+    1) connexion à la bdd
+    */
+    $db = getConnection();
+    /*
+    2) // vérif si champs vides => message d'erreur si c'est le cas
+    */
+
+    /*
+    3)  // vérif si longeur des champs correcte
+    4) // vérif si email déjà utilisé
+    5) // vérif si mdp réunit les critères requis (avec fonction checkpassword ci-dessous)
+    6) hâchage du mot de passe (avec password_hash)
+    7) sauvegarde de l'utilisateur en bb
+    8) récupération de son id : $id = $db->lastInsertId();
+    9) insertion de l'adresse en bdd
+    10) message de succès
+    */
+}
 
 ?>

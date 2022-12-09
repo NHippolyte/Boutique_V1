@@ -14,11 +14,9 @@ include('./head.php');
 <?php
     foreach ($_SESSION["panier"] as $article) {
       echo
-
-
       "<div class=\"row row-cols-2 row-cols-lg-5 g-2 g-lg-3\"width: 5rem;\">
      <div class=\"col\">
-     <img class=\"\" src=\"images/" . $article['picture'] . "\" alt=\"Card image cap\">
+     <img class=\"card-img-top\" src=\"./img/"  . $article['picture'] . "\" alt=\"Card image cap\">
      </div>
      <div class=\"col\">
      <h5 class=\"\">${article['name']}</h5>
@@ -47,13 +45,7 @@ include('./head.php');
  </div>";
     }
 
-
-
-
     ?>
-
-
-
 
     <div class="container">
         <div class="row totalachats">
@@ -112,10 +104,8 @@ include('./head.php');
         </div>
     </div>
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
 
 </html>

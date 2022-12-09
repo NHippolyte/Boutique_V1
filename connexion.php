@@ -11,7 +11,7 @@ if (isset($_POST["nom"])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <?php
 include('./head.php');
 ?>
